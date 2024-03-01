@@ -177,7 +177,10 @@ while ($true)
         if ($evt.id -eq 22) {
             $output = @{}
             $output.add("Type", "DNS Query")
-            write-alert $output
+		    $output.add("ProcessId", $evt.ProcessId)
+	        $output.add("Image", $evt.Image)
+		    $output.add("QueryName", $evt.QueryName) # Adding the DNS query name
+		    write-alert $output
         }
         if ($evt.id -eq 23) {
             $output = @{}
